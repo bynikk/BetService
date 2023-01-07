@@ -14,4 +14,9 @@
     <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BetService.BusinessLogic\BetService.BusinessLogic.csproj" />
+    <ProjectReference Include="..\BetService.DataAccess\BetService.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>
