@@ -15,7 +15,6 @@ namespace BetService.DataAccess
         {
             _context = context;
             _betDbConfig = options.Value;
-
         }
 
         public IMongoCollection<BetEntitiy> Bets
@@ -32,5 +31,8 @@ namespace BetService.DataAccess
 
         public IMongoCollection<CoefficientEntity> Coefficients
             => _context.GetCollection<CoefficientEntity>(_betDbConfig.CoefficientsContainer);
+
+        public IMongoCollection<OutcomeEntity> Outcomes
+            => _context.GetCollection<OutcomeEntity>(_betDbConfig.OutcomesContainer);
     }
 }
