@@ -4,7 +4,7 @@
     {
         public Guid Id { get; set; }
 
-        public Guid BettorId { get; set; }
+        public Guid ProfileId { get; set; }
 
         public Guid OutcomeId { get; set; }
 

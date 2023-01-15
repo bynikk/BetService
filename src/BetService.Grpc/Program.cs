@@ -1,3 +1,4 @@
+﻿using BetService.BusinessLogic.Models.Competitions;
 using BetService.Grpc.Services;
 
 var builder = WebApplication.CreateBuilder(args);

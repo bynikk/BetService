@@ -4,7 +4,7 @@
     {
         Unspecified = 0,
 
-        Esport = 1,
+        EsportCS = 1,
 
         Football = 2
     }

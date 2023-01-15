@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using BetService.BusinessLogic.Enums;
 
 namespace BetService.BusinessLogic.Models
 {
@@ -6,6 +7,12 @@ namespace BetService.BusinessLogic.Models
     {
         public Guid Id { get; set; }
 
-        public double Multiplier { get; set; }
+        public double Rate { get; set; }
+
+        public OutcomeStatusType OutcomeStatusType { get; set; }
+
+        public double Amount { get; set; }
+
+        public int Probability { get; set; }
     }
 }

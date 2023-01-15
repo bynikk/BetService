@@ -1,11 +1,11 @@
 ﻿namespace BetService.BusinessLogic.Enums
 {
-    public enum OutcomeType
+    public enum OutcomeGroupType
     {
         Unspecified = 0,
 
         OneWinner = 1,
 
-        Bo3AccurateScore = 2,
+        TwoWinners = 2,
     }
 }
