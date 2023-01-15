@@ -1,4 +1,5 @@
 ﻿using BetService.DataAccess.MongoEntities;
+using BetService.DataAccess.MongoEntities.CompetitionEntities;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
@@ -17,22 +18,16 @@ namespace BetService.DataAccess
             _betDbConfig = options.Value;
         }
 
-        public IMongoCollection<BetEntitiy> Bets
-            => _context.GetCollection<BetEntitiy>(_betDbConfig.BetsContainer);
+        public IMongoCollection<OutcomeGroupEntity> OutcomeGroupCollection
+            => _context.GetCollection<OutcomeGroupEntity>(_betDbConfig.OutcomeGroupCollectionName);
 
-        public IMongoCollection<BettorEntity> Bettors
-            => _context.GetCollection<BettorEntity>(_betDbConfig.BettorsContainer);
+        public IMongoCollection<BetEntitiy> BetCollection
+            => _context.GetCollection<BetEntitiy>(_betDbConfig.BetCollectionName);
 
-        public IMongoCollection<TeamEntity> Teams
-            => _context.GetCollection<TeamEntity>(_betDbConfig.TeamsContainer);
+        public IMongoCollection<TeamEntity> TeamCollection
+            => _context.GetCollection<TeamEntity>(_betDbConfig.TeamsCollectionName);
 
-        public IMongoCollection<CompetitionEntity> Competitions
-            => _context.GetCollection<CompetitionEntity>(_betDbConfig.CompetitionsContainer);
-
-        public IMongoCollection<CoefficientEntity> Coefficients
-            => _context.GetCollection<CoefficientEntity>(_betDbConfig.CoefficientsContainer);
-
-        public IMongoCollection<OutcomeEntity> Outcomes
-            => _context.GetCollection<OutcomeEntity>(_betDbConfig.OutcomesContainer);
+        public IMongoCollection<CompetitionCSEntity> CompetitionCSCollection
+            => _context.GetCollection<CompetitionCSEntity>(_betDbConfig.CompetitionsCollectionName);
     }
 }

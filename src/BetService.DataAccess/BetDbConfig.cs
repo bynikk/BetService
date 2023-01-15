@@ -6,16 +6,12 @@
 
         public string? DatabaseName { get; set; }
 
-        public string? CompetitionsContainer { get; set; }
+        public string? CompetitionsCollectionName { get; set; }
 
-        public string? TeamsContainer { get; set; }
+        public string? TeamsCollectionName { get; set; }
 
-        public string? BetsContainer { get; set; }
+        public string? BetCollectionName { get; set; }
 
-        public string? BettorsContainer { get; set; }
-
-        public string? OutcomesContainer { get; set; }
-
-        public string? CoefficientsContainer { get; set; }
+        public string? OutcomeGroupCollectionName { get; set; }
     }
 }

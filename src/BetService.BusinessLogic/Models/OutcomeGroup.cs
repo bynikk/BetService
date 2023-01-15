@@ -7,7 +7,7 @@ namespace BetService.BusinessLogic.Models
     {
         public OutcomeGroup()
         {
-            OutcomeIds = new();
+            Outcomes = new();
         }
 
         public Guid Id { get; set; }
@@ -16,6 +16,6 @@ namespace BetService.BusinessLogic.Models
 
         public OutcomeGroupType OutcomeGroupType { get; set; }
 
-        public List<Guid> OutcomeIds { get; set; }
+        public List<Outcome> Outcomes { get; set; }
     }
 }

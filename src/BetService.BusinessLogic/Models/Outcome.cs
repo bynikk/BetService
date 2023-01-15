@@ -6,7 +6,7 @@ namespace BetService.BusinessLogic.Models
     {
         public Guid Id { get; set; }
 
-        public Guid CoefficientId { get; set; }
+        public Coefficient Coefficient { get; set; }
 
         public string Description { get; set; }
     }

@@ -2,14 +2,13 @@
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 
-namespace BetService.DataAccess.MongoEntities
+namespace BetService.DataAccess.MongoEntities.CompetitionEntities
 {
-    public class CompetitionEntity
+    public abstract class CompetitionEntityBase
     {
-        public CompetitionEntity()
+        public CompetitionEntityBase()
         {
-            AvailableOutcomeIds = Array.Empty<string>();
-            Teams = Array.Empty<string>();
+            OutcomeGroupIds = Array.Empty<string>();
         }
 
         [BsonId]
@@ -21,8 +20,6 @@ namespace BetService.DataAccess.MongoEntities
         [BsonRepresentation(BsonType.DateTime)]
         public DateTime StartTime { get; set; }
 
-        public string[] Teams { get; set; }
-
-        public string[] AvailableOutcomeIds { get; set; }
+        public string[] OutcomeGroupIds { get; set; }
     }
 }
