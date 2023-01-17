@@ -1,6 +1,5 @@
-﻿using BetService.BusinessLogic.Models.Competitions;
-using BetService.DataAccess;
-using BetService.Grpc.Services;
+﻿using BetService.DataAccess;
+using BetService.Grpc.Infastructure.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,12 +9,18 @@ builder.Services.Configure<BetDbConfig>(
     builder.Configuration.GetSection("BetDbConfig"));
 
 builder.Services
+    .AddProviders()
     .AddMongoDbContext()
+    .AddInfrastructureServices()
     .AddGrpc();
 
 var app = builder.Build();
 
-app.MapGrpcService<GreeterService>();
-app.MapGet("/", () => "It's works!");
+app.MapGrpcService<BetService.Grpc.Services.BetService>();
 
 app.Run();
+
+namespace BetService.Grpc
+{
+    public partial class Program { }
+}

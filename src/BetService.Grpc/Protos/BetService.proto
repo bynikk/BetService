@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package bet;
+
+option csharp_namespace = "BetService.Grpc";
+
+service BetService {
+  rpc GetCompetitions(GetCompetitionsRequest)
+    returns (GetCompetitionsResponse);
+}
+
+message GetCompetitionsRequest {
+}
+
+message GetCompetitionsResponse {
+}

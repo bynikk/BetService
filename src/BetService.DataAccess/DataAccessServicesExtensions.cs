@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using BetService.BusinessLogic.Contracts.Providers;
+using BetService.BusinessLogic.Models.Competitions;
+using BetService.DataAccess.Providers;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
@@ -19,9 +22,9 @@ namespace BetService.DataAccess
                     .AddScoped(serviceProvider =>
                 serviceProvider.GetRequiredService<BetDbContext>().BetCollection)
                     .AddScoped(serviceProvider =>
-                serviceProvider.GetRequiredService<BetDbContext>().OutcomeGroupCollection)
+                serviceProvider.GetRequiredService<BetDbContext>().TeamCollection)
                     .AddScoped(serviceProvider =>
-                serviceProvider.GetRequiredService<BetDbContext>().TeamCollection);
+                serviceProvider.GetRequiredService<BetDbContext>().CompetitionCSCollection);
 
             services.AddSingleton(serviceProvider =>
             {
@@ -51,6 +54,8 @@ namespace BetService.DataAccess
         /// </returns>
         public static IServiceCollection AddProviders(this IServiceCollection services)
         {
+            services.AddScoped<ICompetitionProvider<CompetitionCS>, CompetitionCSProvider>();
+
             return services;
         }
 
