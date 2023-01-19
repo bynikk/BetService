@@ -20,6 +20,13 @@ namespace BetService.DataAccess.Providers
             _mapper = mapper;
         }
 
+        public async Task<CompetitionCS> GetCompetitionById(Guid Id, CancellationToken token)
+        {
+            var item = await _collection.FindAsync(x => x.Id == Id.ToString());
+
+            return _mapper.Map<CompetitionCS>(item);
+        }
+
         public async Task<List<CompetitionCS>> GetCompetitionsByStatusType(
             CompetitionStatusType competitionStatusType,
             int page,
@@ -33,9 +40,9 @@ namespace BetService.DataAccess.Providers
             var query = builder.And(quaryCompetitionType, quaryStatusType);
             var entities = await _collection.Find(query).ToListAsync(token);
 
-            var competitions = _mapper.Map<List<CompetitionCS>>(entities);
+            var items = _mapper.Map<List<CompetitionCS>>(entities);
 
-            return competitions;
+            return items;
 
         }
     }
