@@ -3,16 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetService.DataAccess", "src\BetService.DataAccess\BetService.DataAccess.csproj", "{934E32CA-C951-4D61-870E-1AE4C6DA441D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetService.DataAccess", "src\BetService.DataAccess\BetService.DataAccess.csproj", "{934E32CA-C951-4D61-870E-1AE4C6DA441D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetService.BusinessLogic", "src\BetService.BusinessLogic\BetService.BusinessLogic.csproj", "{DD481ED5-58D4-4AF0-8D0B-E71097970559}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetService.Grpc", "src\BetService.Grpc\BetService.Grpc.csproj", "{7CEB0894-4D9D-4F8F-8D32-4DB9D3EDC978}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetService.BusinessLogic", "src\BetService.BusinessLogic\BetService.BusinessLogic.csproj", "{DD481ED5-58D4-4AF0-8D0B-E71097970559}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{28BA7645-A7F5-4097-B162-54A244D3FA1E}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetService.Grpc", "src\BetService.Grpc\BetService.Grpc.csproj", "{3170DE5F-23B4-4938-99C4-AADE3F5FBF5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,10 +28,10 @@ Global
 		{DD481ED5-58D4-4AF0-8D0B-E71097970559}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD481ED5-58D4-4AF0-8D0B-E71097970559}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD481ED5-58D4-4AF0-8D0B-E71097970559}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7CEB0894-4D9D-4F8F-8D32-4DB9D3EDC978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7CEB0894-4D9D-4F8F-8D32-4DB9D3EDC978}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7CEB0894-4D9D-4F8F-8D32-4DB9D3EDC978}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7CEB0894-4D9D-4F8F-8D32-4DB9D3EDC978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3170DE5F-23B4-4938-99C4-AADE3F5FBF5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3170DE5F-23B4-4938-99C4-AADE3F5FBF5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3170DE5F-23B4-4938-99C4-AADE3F5FBF5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3170DE5F-23B4-4938-99C4-AADE3F5FBF5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
