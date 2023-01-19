@@ -1,6 +1,8 @@
 ﻿using BetService.BusinessLogic.Contracts.Providers;
+using BetService.BusinessLogic.Contracts.Repositories;
 using BetService.BusinessLogic.Models.Competitions;
 using BetService.DataAccess.Providers;
+using BetService.DataAccess.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
@@ -44,6 +46,8 @@ namespace BetService.DataAccess
         /// </returns>
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
+            services.AddScoped<ICompetitionRepository<CompetitionCS>, CompetitionCSRepository>();
+
             return services;
         }
 

@@ -9,8 +9,9 @@ builder.Services.Configure<BetDbConfig>(
     builder.Configuration.GetSection("BetDbConfig"));
 
 builder.Services
-    .AddProviders()
     .AddMongoDbContext()
+    .AddRepositories()
+    .AddProviders()
     .AddInfrastructureServices()
     .AddGrpc();
 

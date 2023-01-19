@@ -1,4 +1,5 @@
 ﻿using BetService.DataAccess.Mappings;
+using BetService.Grpc.Infastructure.Mappings;
 
 namespace BetService.Grpc.Infastructure.Configurations
 {
@@ -9,6 +10,7 @@ namespace BetService.Grpc.Infastructure.Configurations
             services.AddAutoMapper(config =>
             {
                 config.AddProfile<DataAccessProfile>();
+                config.AddProfile<BetServiceProfile>();
             });
 
             return services;

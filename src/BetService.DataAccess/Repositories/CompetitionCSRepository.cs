@@ -25,14 +25,15 @@ namespace BetService.DataAccess.Repositories
         {
             var itemEntity = _mapper.Map<CompetitionCSEntity>(item);
 
-            _collection.InsertOne(itemEntity, _defaultInsertOneOption, cancellationToken);
-            
-            return Task.CompletedTask;
+            return _collection.InsertOneAsync(itemEntity, _defaultInsertOneOption, cancellationToken);
         }
 
         public Task DeleteCompetitionById(Guid Id, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var builder = Builders<CompetitionCSEntity>.Filter;
+            var quaryId = builder.Eq(x => x.Id, Id.ToString());
+
+            return _collection.DeleteOneAsync(quaryId, cancellationToken);
         }
 
         public Task UpdateCompetitionById(CompetitionCS item, CancellationToken cancellationToken)
