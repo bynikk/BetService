@@ -8,7 +8,7 @@ namespace BetService.DataAccess.MongoEntities.CompetitionEntities
     {
         public CompetitionEntityBase()
         {
-            OutcomeGroupIds = Array.Empty<string>();
+            OutcomeGroups = Array.Empty<OutcomeGroupEntity>();
         }
 
         [BsonId]
@@ -20,6 +20,6 @@ namespace BetService.DataAccess.MongoEntities.CompetitionEntities
         [BsonRepresentation(BsonType.DateTime)]
         public DateTime StartTime { get; set; }
 
-        public string[] OutcomeGroupIds { get; set; }
+        public OutcomeGroupEntity[] OutcomeGroups { get; set; }
     }
 }

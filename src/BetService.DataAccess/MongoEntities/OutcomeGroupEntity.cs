@@ -19,7 +19,7 @@ namespace BetService.DataAccess.MongoEntities
         [BsonRepresentation(BsonType.String)]
         public string Name { get; set; }
 
-        public OutcomeGroupType OutcomeGroupType { get; set; }
+        public OutcomeGroupType Type { get; set; }
 
         public OutcomeEntity[] Outcomes { get; set; }
     }

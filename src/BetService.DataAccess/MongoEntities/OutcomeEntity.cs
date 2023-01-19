@@ -10,8 +10,6 @@ namespace BetService.DataAccess.MongoEntities
         [BsonRepresentation(BsonType.String)]
         public string Id { get; set; }
 
-        public OutcomeStatusType StatusType { get; set; }
-
         public CoefficientEntity Coefficient { get; set; }
 
         [BsonRepresentation(BsonType.String)]

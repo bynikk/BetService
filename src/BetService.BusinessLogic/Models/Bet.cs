@@ -6,6 +6,8 @@
 
         public Guid ProfileId { get; set; }
 
+        public Guid OutcomeGroupId { get; set; }
+
         public Guid OutcomeId { get; set; }
 
         public Guid CoefficientId { get; set; }

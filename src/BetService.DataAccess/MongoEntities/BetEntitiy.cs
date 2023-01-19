@@ -14,6 +14,9 @@ namespace BetService.DataAccess.MongoEntities
         public string ProfileId { get; set; }
 
         [BsonRepresentation(BsonType.String)]
+        public string OutcomeGroupId { get; set; }
+
+        [BsonRepresentation(BsonType.String)]
         public string OutcomeId { get; set; }
 
         [BsonRepresentation(BsonType.String)]

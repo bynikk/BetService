@@ -1,6 +1,6 @@
 ﻿namespace BetService.BusinessLogic.Enums
 {
-    public enum OutcomeStatusType
+    public enum CoefficientStatusType
     {
         Unspecified = 0,
 

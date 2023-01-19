@@ -14,7 +14,7 @@ namespace BetService.BusinessLogic.Models
 
         public string Name { get; set; }
 
-        public OutcomeGroupType OutcomeGroupType { get; set; }
+        public OutcomeGroupType Type { get; set; }
 
         public List<Outcome> Outcomes { get; set; }
     }

@@ -9,10 +9,10 @@ namespace BetService.BusinessLogic.Models
 
         public double Rate { get; set; }
 
-        public OutcomeStatusType OutcomeStatusType { get; set; }
+        public CoefficientStatusType StatusType { get; set; }
 
         public double Amount { get; set; }
 
-        public int Probability { get; set; }
+        public double Probability { get; set; }
     }
 }

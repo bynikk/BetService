@@ -13,12 +13,12 @@ namespace BetService.DataAccess.MongoEntities
         [BsonRepresentation(BsonType.Double)]
         public double Rate { get; set; }
 
-        public OutcomeStatusType OutcomeStatusType { get; set; }
+        public CoefficientStatusType StatusType { get; set; }
 
         [BsonRepresentation(BsonType.Double)]
         public double Amount { get; set; }
 
-        [BsonRepresentation(BsonType.Int32)]
-        public int Probability { get; set; }
+        [BsonRepresentation(BsonType.Double)]
+        public double Probability { get; set; }
     }
 }
