@@ -1,28 +1,34 @@
-﻿using BetService.BusinessLogic.Contracts.Providers;
-using BetService.BusinessLogic.Models.Competitions;
-using BetService.Grpc;
+﻿using AutoMapper;
+using BetService.BusinessLogic.Contracts.Repositories;
 using Grpc.Core;
+
+using BussinessModels = BetService.BusinessLogic.Models;
 
 namespace BetService.Grpc.Services
 {
     public class BetService : Grpc.BetService.BetServiceBase
     {
-        private readonly ICompetitionProvider<CompetitionCS> _competitionProvider;
+        private readonly ICompetitionRepository<BussinessModels.Competitions.CompetitionCS> _competitionRepository;
+        private readonly IMapper _mapper;
         private readonly ILogger<BetService> _logger;
 
-        public BetService(ILogger<BetService> logger, ICompetitionProvider<CompetitionCS> competitionProvider)
+        public BetService(
+            ILogger<BetService> logger,
+            ICompetitionRepository<BussinessModels.Competitions.CompetitionCS> competitionRepository,
+            IMapper mapper)
         {
             _logger = logger;
-            _competitionProvider = competitionProvider;
+            _competitionRepository = competitionRepository;
+            _mapper = mapper;
         }
 
-        public override async Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
+        public override async Task<CreateCompetitionResponse> CreateCompetition(CreateCompetitionRequest request, ServerCallContext context)
         {
-            var a = await _competitionProvider.GetCompetitionsByStatusType(BusinessLogic.Enums.CompetitionStatusType.Live, 4, 4, CancellationToken.None);
-            return new HelloReply
-            {
-                Message = "Hello " + request.Name
-            };
+            var competition = _mapper.Map<BussinessModels.Competitions.CompetitionCS>(request.Competition);
+            await _competitionRepository.CreateCompetition(
+                competition
+                , context.CancellationToken);
+            return new CreateCompetitionResponse();
         }
     }
 }
