@@ -1,0 +1,17 @@
+﻿version: '3'
+
+services:
+  bet_mongo:
+    container_name: BetService_Mongo
+    image: mongo:latest
+    ports:
+      - 27018:27017
+    restart: unless-stopped
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo 127.0.0.1:27017/test --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+    volumes:
+      - ./db:/data/db
