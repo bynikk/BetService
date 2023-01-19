@@ -1,21 +1,88 @@
 syntax = "proto3";
 
-option csharp_namespace = "BetService.Grpc";
-
 package betserivce;
 
-// The greeting service definition.
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "BetService.Grpc";
+
 service BetService {
-  // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc CreateCompetition (CreateCompetitionRequest)
+    returns (CreateCompetitionResponse);
 }
 
-// The request message containing the user's name.
-message HelloRequest {
-  string name = 1;
+message CreateCompetitionRequest {
+  CompetitionCS competition = 1;
 }
 
-// The response message containing the greetings.
-message HelloReply {
-  string message = 1;
+message CreateCompetitionResponse {
+}
+
+enum CompetitionStatusType {
+  COMPETITION_STATUS_TYPE_UNSPECIFIED = 0;
+  COMPETITION_STATUS_TYPE_WAITING = 1;
+  COMPETITION_STATUS_TYPE_LIVE = 2;
+  COMPETITION_STATUS_TYPE_ENDED = 3;
+}
+
+enum CompetitionType {
+  COMPETITION_TYPE_UNSPECIFIED = 0;
+  COMPETITION_TYPE_ESPORTCS = 1;
+  COMPETITION_TYPE_FOOTBALL = 2;
+}
+
+enum OutcomeGroupType {
+  OUTCOME_GROUP_TYPE_UNSPECIFIED = 0;
+  OUTCOME_GROUP_TYPE_ONE_WINNER = 1;
+  OUTCOME_GROUP_TYPE_TWO_WINNERS = 2;
+}
+
+enum CoefficientStatusType {
+  COEFFICIENT_STATUS_TYPE_UNSPECIFIED = 0;
+  COEFFICIENT_STATUS_TYPE_ACTIVE = 1;
+  COEFFICIENT_STATUS_TYPE_COMPLETED = 2;
+  COEFFICIENT_STATUS_TYPE_BLOCKED = 3;
+}
+
+message Bet {
+  string id = 1;
+  string profile_id = 2;
+  string outcome_group_id = 3;
+  string outcome_id = 4;
+  string coefficient_id = 5;
+  double rate = 6;
+  double amount = 7;
+}
+
+message Coefficient {
+  string id = 1;
+  double rate = 2;
+  CoefficientStatusType status_type = 3;
+  double amount = 4;
+  double probability = 5;
+}
+
+message Outcome {
+  string id = 1;
+  string description = 2;
+  Coefficient coefficient = 3;
+}
+
+message OutcomeGroup {
+  string id = 1;
+  string name = 2;
+  OutcomeGroupType type = 3;
+  repeated Outcome outcomes = 4;
+}
+
+message CompetitionCS {
+  string id = 1;
+  CompetitionType type = 2;
+  .google.protobuf.Timestamp start_time = 3;
+  repeated OutcomeGroup outcome_groups = 4;
+  string team1_id = 5;
+  string team2_id = 6;
+  int32 team1_kill_amount = 7;
+  int32 team2_kill_amount = 8;
+  .google.protobuf.Timestamp total_time = 9;
 }
