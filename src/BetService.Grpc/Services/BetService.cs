@@ -5,32 +5,30 @@ using Grpc.Core;
 
 using BussinessModels = BetService.BusinessLogic.Models;
 using BussinessEnums = BetService.BusinessLogic.Enums;
+using BetService.BusinessLogic.Contracts.Services;
 
 namespace BetService.Grpc.Services
 {
     public class BetService : Grpc.BetService.BetServiceBase
     {
-        private readonly ICompetitionRepository<BussinessModels.Competitions.CompetitionDota2> _competitionDota2Repository;
-        private readonly ICompetitionProvider<BussinessModels.Competitions.CompetitionDota2> _competitionDota2Provider;
         private readonly IMapper _mapper;
         private readonly ILogger<BetService> _logger;
+        private readonly ICompetitionService<BussinessModels.Competitions.CompetitionDota2> _competitionDota2Service;
 
         public BetService(
             ILogger<BetService> logger,
-            ICompetitionRepository<BussinessModels.Competitions.CompetitionDota2> competitionDota2Repository,
-            ICompetitionProvider<BussinessModels.Competitions.CompetitionDota2> competitionDota2Provider,
+            ICompetitionService<BussinessModels.Competitions.CompetitionDota2> competitionDota2Service,
             IMapper mapper)
         {
             _logger = logger;
-            _competitionDota2Repository = competitionDota2Repository;
-            _competitionDota2Provider = competitionDota2Provider;
+            _competitionDota2Service = competitionDota2Service;
             _mapper = mapper;
         }
 
         public override async Task<CreateCompetitionDota2Response> CreateCompetitionDota2(CreateCompetitionDota2Request request, ServerCallContext context)
         {
             var competition = _mapper.Map<BussinessModels.Competitions.CompetitionDota2>(request.CompetitionDota2);
-            await _competitionDota2Repository.CreateCompetition(
+            await _competitionDota2Service.CreateCompetition(
                 competition
                 , context.CancellationToken);
 
@@ -41,7 +39,7 @@ namespace BetService.Grpc.Services
         {
             var token = context.CancellationToken;
 
-            var competitions = await _competitionDota2Provider.GetCompetitions(
+            var competitions = await _competitionDota2Service.GetCompetitions(
                 request.Page,
                 request.PageSize,
                 token);
@@ -60,7 +58,7 @@ namespace BetService.Grpc.Services
 
             var competitionForUpdate = _mapper.Map<BussinessModels.Competitions.CompetitionDota2>(request.CompetitionDota2);
 
-            await _competitionDota2Repository.UpdateCompetition(competitionForUpdate, token);
+            await _competitionDota2Service.UpdateCompetition(competitionForUpdate, token);
 
             return new UpdateCompetitionDota2Response();
         }
