@@ -14,6 +14,6 @@ namespace BetService.BusinessLogic.Contracts.Repositories
 
         Task DeleteCompetitionById(Guid Id, CancellationToken cancellationToken);
 
-        Task UpdateCompetitionById(T item, CancellationToken cancellationToken);
+        Task UpdateCompetition(T item, CancellationToken cancellationToken);
     }
 }

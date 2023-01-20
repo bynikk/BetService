@@ -3,7 +3,7 @@ using MongoDB.Bson;
 
 namespace BetService.DataAccess.MongoEntities.CompetitionEntities
 {
-    public class CompetitionCSEntity : CompetitionEntityBase
+    public class CompetitionDota2Entity : CompetitionEntityBase
     {
         [BsonRepresentation(BsonType.String)]
         public string Team1Id { get; set; }

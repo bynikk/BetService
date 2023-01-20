@@ -24,7 +24,7 @@ namespace BetService.DataAccess.Mappings
                 .ReverseMap();
             CreateMap<CoefficientEntity, Coefficient>()
                 .ReverseMap();
-            CreateMap<CompetitionCSEntity, CompetitionCS>()
+            CreateMap<CompetitionDota2Entity, CompetitionDota2>()
                .ReverseMap();
             CreateMap<string, Guid>()
                 .ConvertUsing((x, res) => res = Guid.TryParse(x, out var id) ? id : Guid.Empty);

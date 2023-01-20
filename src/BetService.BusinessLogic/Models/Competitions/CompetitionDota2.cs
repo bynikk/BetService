@@ -1,8 +1,8 @@
 ﻿namespace BetService.BusinessLogic.Models.Competitions
 {
-    public class CompetitionCS : CompetitionBase
+    public class CompetitionDota2 : CompetitionBase
     {
-        public CompetitionCS()
+        public CompetitionDota2()
         {
         }
 

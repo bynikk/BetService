@@ -46,7 +46,7 @@ namespace BetService.DataAccess
         /// </returns>
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            services.AddScoped<ICompetitionRepository<CompetitionCS>, CompetitionCSRepository>();
+            services.AddScoped<ICompetitionRepository<CompetitionDota2>, CompetitionDota2Repository>();
 
             return services;
         }
@@ -58,7 +58,7 @@ namespace BetService.DataAccess
         /// </returns>
         public static IServiceCollection AddProviders(this IServiceCollection services)
         {
-            services.AddScoped<ICompetitionProvider<CompetitionCS>, CompetitionCSProvider>();
+            services.AddScoped<ICompetitionProvider<CompetitionDota2>, CompetitionDota2Provider>();
 
             return services;
         }

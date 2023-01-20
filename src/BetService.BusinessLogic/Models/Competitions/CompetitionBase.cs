@@ -11,7 +11,9 @@ namespace BetService.BusinessLogic.Models.Competitions
 
         public Guid Id { get; set; }
 
-        public CompetitionType CompetitionType { get; set; }
+        public CompetitionStatusType StatusType { get; set; }
+
+        public CompetitionType Type { get; set; }
 
         public DateTime StartTime { get; set; }
 

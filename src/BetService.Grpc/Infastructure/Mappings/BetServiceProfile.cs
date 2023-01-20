@@ -13,7 +13,7 @@ namespace BetService.Grpc.Infastructure.Mappings
             CreateMap<Timestamp, DateTime>()
                 .ConvertUsing(x => x.ToDateTime());
 
-            CreateMap<CompetitionCS, BusinessModels.Models.Competitions.CompetitionCS>()
+            CreateMap<CompetitionCS, BusinessModels.Models.Competitions.CompetitionDota2>()
                 .ReverseMap();
             CreateMap<Coefficient, BusinessModels.Models.Coefficient>()
                 .ReverseMap();

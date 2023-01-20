@@ -27,7 +27,7 @@ namespace BetService.DataAccess
         public IMongoCollection<TeamEntity> TeamCollection
             => _context.GetCollection<TeamEntity>(_betDbConfig.TeamsCollectionName);
 
-        public IMongoCollection<CompetitionCSEntity> CompetitionCSCollection
-            => _context.GetCollection<CompetitionCSEntity>(_betDbConfig.CompetitionsCollectionName);
+        public IMongoCollection<CompetitionDota2Entity> CompetitionCSCollection
+            => _context.GetCollection<CompetitionDota2Entity>(_betDbConfig.CompetitionsCollectionName);
     }
 }

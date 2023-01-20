@@ -6,6 +6,8 @@
 
         EsportCS = 1,
 
-        Football = 2
+        EsportDota2 = 2,
+
+        Football = 3
     }
 }

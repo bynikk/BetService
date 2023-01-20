@@ -15,7 +15,9 @@ namespace BetService.DataAccess.MongoEntities.CompetitionEntities
         [BsonRepresentation(BsonType.String)]
         public string Id { get; set; }
 
-        public CompetitionType CompetitionType { get; set; }
+        public CompetitionStatusType StatusType { get; set; }
+
+        public CompetitionType Type { get; set; }
 
         [BsonRepresentation(BsonType.DateTime)]
         public DateTime StartTime { get; set; }

@@ -1,7 +1,8 @@
 ﻿using BetService.DataAccess;
 using BetService.Grpc.Infastructure.Configurations;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args)
+    .AddSerialLogger();
 
 var configuration = builder.Configuration;
 
