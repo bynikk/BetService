@@ -48,7 +48,6 @@ namespace BetService.DataAccess.Repositories
             var entity = _mapper.Map<CompetitionDota2Entity>(item);
             var builder = Builders<CompetitionDota2Entity>.Update;
 
-            var updateId = builder.Set(x => x.Id, entity.Id);
             var updateName = builder.Set(x => x.StartTime, entity.StartTime);
             var updateTotalTime = builder.Set(x => x.TotalTime, entity.TotalTime);
             var updateTeam1Id = builder.Set(x => x.Team1Id, entity.Team1Id);
@@ -56,15 +55,20 @@ namespace BetService.DataAccess.Repositories
             var updateTeam1KillAmount = builder.Set(x => x.Team1KillAmount, entity.Team1KillAmount);
             var updateTeam2KillAmount = builder.Set(x => x.Team2KillAmount, entity.Team2KillAmount);
             var updateType = builder.Set(x => x.Type, entity.Type);
+            var updateStatusType = builder.Set(x => x.StatusType, entity.StatusType);
+            var updateStartTime = builder.Set(x => x.StartTime, entity.StartTime);
+            var updateOutcomeGroups = builder.Set(x => x.OutcomeGroups, entity.OutcomeGroups);
 
-            var update = builder.Combine(updateId,
-                updateName,
+            var update = builder.Combine(updateName,
                 updateTotalTime,
                 updateTeam1Id,
                 updateTeam2Id,
                 updateTeam1KillAmount,
                 updateTeam2KillAmount,
-                updateType);
+                updateType,
+                updateStatusType,
+                updateStartTime,
+                updateOutcomeGroups);
 
             var filter = Builders<CompetitionDota2Entity>.Filter.Eq(x => x.Id, entity.Id);
 
@@ -72,11 +76,11 @@ namespace BetService.DataAccess.Repositories
 
             if (result.IsAcknowledged)
             {
-                _logger.LogTrace("Confirmed to update construction level with id={EntityId} in database.", item.Id);
+                _logger.LogTrace("Confirmed to update competition dota2 with id={EntityId} in database.", item.Id);
             }
             else
             {
-                _logger.LogTrace("Not confirmed to update construction level with id={EntityId} in database", item.Id);
+                _logger.LogTrace("Not confirmed to update competition dota2 with id={EntityId} in database", item.Id);
             }
 
         }

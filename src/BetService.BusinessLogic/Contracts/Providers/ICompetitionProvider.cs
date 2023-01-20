@@ -5,8 +5,7 @@ namespace BetService.BusinessLogic.Contracts.Providers
 {
     public interface ICompetitionProvider<T> where T : class
     {
-        Task<List<CompetitionDota2>> GetCompetitionsByStatusType(
-            CompetitionStatusType competitionStatusType,
+        Task<List<CompetitionDota2>> GetCompetitions(
             int page,
             int pageSize,
             CancellationToken token);

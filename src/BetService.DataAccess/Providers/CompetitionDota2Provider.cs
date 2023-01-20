@@ -27,19 +27,16 @@ namespace BetService.DataAccess.Providers
             return _mapper.Map<CompetitionDota2>(item);
         }
 
-        public async Task<List<CompetitionDota2>> GetCompetitionsByStatusType(
-            CompetitionStatusType competitionStatusType,
+        public async Task<List<CompetitionDota2>> GetCompetitions(
             int page,
             int pageSize,
             CancellationToken token)
         {
             var builder = Builders<CompetitionDota2Entity>.Filter;
-            var quaryCompetitionType = builder.Eq(x => x.Type, CompetitionType.EsportDota2);
-            var quaryStatusType = builder.Eq(x => x.StatusType, competitionStatusType);
+            var queryType = builder.Eq(x => x.Type, CompetitionType.EsportDota2);
 
-            var query = builder.And(quaryCompetitionType, quaryStatusType);
             var entities = await _collection
-                .Find(query)
+                .Find(queryType)
                 .Skip((page - 1) * pageSize)
                 .Limit(pageSize)
                 .ToListAsync(token);
