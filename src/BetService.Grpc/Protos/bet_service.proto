@@ -7,15 +7,35 @@ import "google/protobuf/timestamp.proto";
 option csharp_namespace = "BetService.Grpc";
 
 service BetService {
-  rpc CreateCompetition (CreateCompetitionRequest)
-    returns (CreateCompetitionResponse);
+  rpc CreateCompetitionDota2 (CreateCompetitionDota2Request)
+    returns (CreateCompetitionDota2Response);
+  rpc GetCompetitionsDota2 (GetCompetitionsDota2Request)
+    returns (GetCompetitionsDota2Response);
+  rpc UpdateCompetitionDota2 (UpdateCompetitionDota2Request)
+    returns (UpdateCompetitionDota2Response);
 }
 
-message CreateCompetitionRequest {
-  CompetitionCS competition = 1;
+message CreateCompetitionDota2Request {
+  CompetitionDota2 competition_dota2 = 1;
 }
 
-message CreateCompetitionResponse {
+message CreateCompetitionDota2Response {
+}
+
+message GetCompetitionsDota2Request {
+  int32 page = 1;
+  int32 page_size = 2;
+}
+
+message GetCompetitionsDota2Response {
+  repeated CompetitionDota2 competitions_dota2 = 1;
+}
+
+message UpdateCompetitionDota2Request {
+  CompetitionDota2 competition_dota2 = 1;
+}
+
+message UpdateCompetitionDota2Response {
 }
 
 enum CompetitionStatusType {
@@ -28,7 +48,8 @@ enum CompetitionStatusType {
 enum CompetitionType {
   COMPETITION_TYPE_UNSPECIFIED = 0;
   COMPETITION_TYPE_ESPORTCS = 1;
-  COMPETITION_TYPE_FOOTBALL = 2;
+  COMPETITION_TYPE_ESPORTDOTA2 = 2;
+  COMPETITION_TYPE_FOOTBALL = 3;
 }
 
 enum OutcomeGroupType {
@@ -75,14 +96,15 @@ message OutcomeGroup {
   repeated Outcome outcomes = 4;
 }
 
-message CompetitionCS {
+message CompetitionDota2 {
   string id = 1;
   CompetitionType type = 2;
-  .google.protobuf.Timestamp start_time = 3;
-  repeated OutcomeGroup outcome_groups = 4;
-  string team1_id = 5;
-  string team2_id = 6;
-  int32 team1_kill_amount = 7;
-  int32 team2_kill_amount = 8;
-  .google.protobuf.Timestamp total_time = 9;
+  CompetitionStatusType status_type = 3;
+  .google.protobuf.Timestamp start_time = 4;
+  repeated OutcomeGroup outcome_groups = 5;
+  string team1_id = 6;
+  string team2_id = 7;
+  int32 team1_kill_amount = 8;
+  int32 team2_kill_amount = 9;
+  .google.protobuf.Timestamp total_time = 10;
 }
