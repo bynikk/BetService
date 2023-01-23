@@ -16,21 +16,18 @@ namespace BetService.DataAccess.Mappings
         /// <summary>Initializes a new instance of the <see cref="DataAccessProfile" /> class.</summary>
         public DataAccessProfile()
         {
-            CreateMap<OutcomeEntity, Outcome>()
+            CreateMap<CoefficientEntity, Coefficient>()
                 .ReverseMap();
-            CreateMap<OutcomeGroupEntity, OutcomeGroup>()
-                .ReverseMap();
-            CreateMap<TeamEntity, Team>()
+            CreateMap<CoefficientGroupEntity, CoefficientGroup>()
                 .ReverseMap();
             CreateMap<CoefficientEntity, Coefficient>()
                 .ReverseMap();
             CreateMap<CompetitionDota2Entity, CompetitionDota2>()
                .ReverseMap();
+            CreateMap<Guid, string>()
+                .ConvertUsing(s => s.ToString());
             CreateMap<string, Guid>()
-                .ConvertUsing((x, res) => res = Guid.TryParse(x, out var id) ? id : Guid.Empty);
-            CreateMap<Guid?, string>()
-                .ConvertUsing((x, res) => res = x?.ToString() ?? string.Empty);
-
+                .ConvertUsing(s => Guid.Parse(s));
         }
     }
 

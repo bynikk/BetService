@@ -18,16 +18,7 @@ namespace BetService.DataAccess
             _betDbConfig = options.Value;
         }
 
-        public IMongoCollection<OutcomeGroupEntity> OutcomeGroupCollection
-            => _context.GetCollection<OutcomeGroupEntity>(_betDbConfig.OutcomeGroupCollectionName);
-
-        public IMongoCollection<BetEntitiy> BetCollection
-            => _context.GetCollection<BetEntitiy>(_betDbConfig.BetCollectionName);
-
-        public IMongoCollection<TeamEntity> TeamCollection
-            => _context.GetCollection<TeamEntity>(_betDbConfig.TeamsCollectionName);
-
-        public IMongoCollection<CompetitionDota2Entity> CompetitionCSCollection
+        public IMongoCollection<CompetitionDota2Entity> CompetitionDoat2Collection
             => _context.GetCollection<CompetitionDota2Entity>(_betDbConfig.CompetitionsCollectionName);
     }
 }

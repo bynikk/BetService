@@ -1,11 +1,12 @@
-﻿using System.Runtime.CompilerServices;
-using BetService.BusinessLogic.Enums;
+﻿using BetService.BusinessLogic.Enums;
 
 namespace BetService.BusinessLogic.Models
 {
     public class Coefficient
     {
         public Guid Id { get; set; }
+
+        public string Description { get; set; }
 
         public double Rate { get; set; }
 

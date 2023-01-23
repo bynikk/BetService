@@ -52,10 +52,10 @@ enum CompetitionType {
   COMPETITION_TYPE_FOOTBALL = 3;
 }
 
-enum OutcomeGroupType {
-  OUTCOME_GROUP_TYPE_UNSPECIFIED = 0;
-  OUTCOME_GROUP_TYPE_ONE_WINNER = 1;
-  OUTCOME_GROUP_TYPE_TWO_WINNERS = 2;
+enum CoefficientGroupType {
+  COEFFICIENT_GROUP_TYPE_UNSPECIFIED = 0;
+  COEFFICIENT_GROUP_TYPE_ONE_WINNER = 1;
+  COEFFICIENT_GROUP_TYPE_TWO_WINNERS = 2;
 }
 
 enum CoefficientStatusType {
@@ -65,35 +65,20 @@ enum CoefficientStatusType {
   COEFFICIENT_STATUS_TYPE_BLOCKED = 3;
 }
 
-message Bet {
-  string id = 1;
-  string profile_id = 2;
-  string outcome_group_id = 3;
-  string outcome_id = 4;
-  string coefficient_id = 5;
-  double rate = 6;
-  double amount = 7;
-}
-
 message Coefficient {
   string id = 1;
-  double rate = 2;
-  CoefficientStatusType status_type = 3;
-  double amount = 4;
-  double probability = 5;
-}
-
-message Outcome {
-  string id = 1;
   string description = 2;
-  Coefficient coefficient = 3;
+  double rate = 3;
+  CoefficientStatusType status_type = 4;
+  double amount = 5;
+  double probability = 6;
 }
 
-message OutcomeGroup {
+message CoefficientGroup {
   string id = 1;
   string name = 2;
-  OutcomeGroupType type = 3;
-  repeated Outcome outcomes = 4;
+  CoefficientGroupType type = 3;
+  repeated Coefficient coefficients = 4;
 }
 
 message CompetitionDota2 {
@@ -101,7 +86,7 @@ message CompetitionDota2 {
   CompetitionType type = 2;
   CompetitionStatusType status_type = 3;
   .google.protobuf.Timestamp start_time = 4;
-  repeated OutcomeGroup outcome_groups = 5;
+  repeated CoefficientGroup coefficient_groups = 5;
   string team1_id = 6;
   string team2_id = 7;
   int32 team1_kill_amount = 8;

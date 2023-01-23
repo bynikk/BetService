@@ -35,38 +35,54 @@ Example of competition_dota2 entity:
 			"seconds": "60",
 			 "nanos": 928852400
 		},
-		"outcome_groups" : 
+		"coefficient_groups" : 
 		[
 			{
 				"id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
 				"name" : "winner",
 				"type" : "OUTCOME_GROUP_TYPE_ONE_WINNER",
-				"outcomes" : 
+				"coefficients" : 
 				[
-					{
-						"id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
-						"description" : "team1 won",
-						"coefficient" : 
 						{
 							"id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
+							"description" : "team1 won",
 							"rate" : 1.2,
 							"status_type" : "COEFFICIENT_STATUS_TYPE_ACTIVE",
 							"amount" : 0,
 							"probability" : 50
-						}
-					},
-					{
-						"id" : "3c203bd7-2d7e-4937-a82a-e451cedf2ba8",
-						"description" : "team2 won",
-						"coefficient" : 
+						},
 						{
 							"id" : "3c203bd7-2d7e-4937-a82a-e451cedf2ba8",
+							"description" : "team2 won",
 							"rate" : 0,
 							"status_type" : "COEFFICIENT_STATUS_TYPE_ACTIVE",
 							"amount" : 0,
 							"probability" : 50
 						}
-					}
+				]
+			},
+			{
+				"id" : "1e52e2e0-af3e-4e8d-a8e1-a87a44114b59",
+				"name" : "winner",
+				"type" : "OUTCOME_GROUP_TYPE_ONE_WINNER",
+				"coefficients" : 
+				[
+						{
+							"id" : "b350c9fd-3632-4b0a-b5cb-66e41d530f55",
+							"description" : "team1 won",
+							"rate" : 1.2,
+							"status_type" : "COEFFICIENT_STATUS_TYPE_ACTIVE",
+							"amount" : 0,
+							"probability" : 50
+						},
+						{
+							"id" : "3c203bd7-2d7e-4937-a82a-e451cedf2ba8",
+							"description" : "team2 won",
+							"rate" : 0,
+							"status_type" : "COEFFICIENT_STATUS_TYPE_ACTIVE",
+							"amount" : 0,
+							"probability" : 50
+						}
 				]
 			}
 		],

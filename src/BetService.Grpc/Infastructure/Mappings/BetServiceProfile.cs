@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BetService.BusinessLogic.Models;
 using Google.Protobuf.WellKnownTypes;
 using BusinessModels = BetService.BusinessLogic;
 
@@ -17,16 +18,14 @@ namespace BetService.Grpc.Infastructure.Mappings
                 .ReverseMap();
             CreateMap<Coefficient, BusinessModels.Models.Coefficient>()
                 .ReverseMap();
-            CreateMap<Outcome, BusinessModels.Models.Outcome>()
-                .ReverseMap();
-            CreateMap<OutcomeGroup, BusinessModels.Models.OutcomeGroup>()
+            CreateMap<CoefficientGroup, BusinessModels.Models.CoefficientGroup>()
                 .ReverseMap();
 
             CreateMap<CompetitionStatusType, BusinessModels.Enums.CompetitionStatusType>()
                 .ReverseMap();
             CreateMap<CompetitionType, BusinessModels.Enums.CompetitionType>()
                 .ReverseMap();
-            CreateMap<OutcomeGroupType, BusinessModels.Enums.OutcomeGroupType>()
+            CreateMap<CoefficientGroupType, BusinessModels.Enums.CoefficientGroupType>()
                 .ReverseMap();
             CreateMap<CoefficientStatusType, BusinessModels.Enums.CoefficientStatusType>()
                 .ReverseMap();

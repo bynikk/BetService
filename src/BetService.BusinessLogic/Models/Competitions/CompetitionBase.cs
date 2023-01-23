@@ -6,7 +6,7 @@ namespace BetService.BusinessLogic.Models.Competitions
     {
         public CompetitionBase()
         {
-            OutcomeGroups = new();
+            CoefficientGroups = new();
         }
 
         public Guid Id { get; set; }
@@ -17,6 +17,6 @@ namespace BetService.BusinessLogic.Models.Competitions
 
         public DateTime StartTime { get; set; }
 
-        public List<OutcomeGroup> OutcomeGroups { get; set; }
+        public List<CoefficientGroup> CoefficientGroups { get; set; }
     }
 }

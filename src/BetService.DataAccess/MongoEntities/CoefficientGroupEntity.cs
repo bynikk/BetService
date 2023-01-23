@@ -1,11 +1,17 @@
 ﻿using BetService.BusinessLogic.Enums;
+using BetService.BusinessLogic.Models;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 
 namespace BetService.DataAccess.MongoEntities
 {
-    public class TeamEntity
+    public class CoefficientGroupEntity
     {
+        public CoefficientGroupEntity()
+        {
+            Coefficients = Array.Empty<CoefficientEntity>();
+        }
+
         [BsonId]
         [BsonRepresentation(BsonType.String)]
         public string Id { get; set; }
@@ -13,9 +19,8 @@ namespace BetService.DataAccess.MongoEntities
         [BsonRepresentation(BsonType.String)]
         public string Name { get; set; }
 
-        public CompetitionType CompetitionType { get; set; }
+        public CoefficientGroupType Type { get; set; }
 
-        [BsonRepresentation(BsonType.String)]
-        public string logo_img { get; set; }
+        public CoefficientEntity[] Coefficients { get; set; }
     }
 }

@@ -10,6 +10,9 @@ namespace BetService.DataAccess.MongoEntities
         [BsonRepresentation(BsonType.String)]
         public string Id { get; set; }
 
+        [BsonRepresentation(BsonType.String)]
+        public string Description { get; set; }
+
         [BsonRepresentation(BsonType.Double)]
         public double Rate { get; set; }
 

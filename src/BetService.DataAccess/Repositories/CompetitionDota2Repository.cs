@@ -57,7 +57,7 @@ namespace BetService.DataAccess.Repositories
             var updateType = builder.Set(x => x.Type, entity.Type);
             var updateStatusType = builder.Set(x => x.StatusType, entity.StatusType);
             var updateStartTime = builder.Set(x => x.StartTime, entity.StartTime);
-            var updateOutcomeGroups = builder.Set(x => x.OutcomeGroups, entity.OutcomeGroups);
+            var updateOutcomeGroups = builder.Set(x => x.CoefficientGroups, entity.CoefficientGroups);
 
             var update = builder.Combine(updateName,
                 updateTotalTime,

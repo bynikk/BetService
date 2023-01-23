@@ -20,13 +20,7 @@ namespace BetService.DataAccess
         {
             services.AddScoped<BetDbContext>()
                     .AddScoped(serviceProvider =>
-                serviceProvider.GetRequiredService<BetDbContext>().OutcomeGroupCollection)
-                    .AddScoped(serviceProvider =>
-                serviceProvider.GetRequiredService<BetDbContext>().BetCollection)
-                    .AddScoped(serviceProvider =>
-                serviceProvider.GetRequiredService<BetDbContext>().TeamCollection)
-                    .AddScoped(serviceProvider =>
-                serviceProvider.GetRequiredService<BetDbContext>().CompetitionCSCollection);
+                serviceProvider.GetRequiredService<BetDbContext>().CompetitionDoat2Collection);
 
             services.AddSingleton(serviceProvider =>
             {
