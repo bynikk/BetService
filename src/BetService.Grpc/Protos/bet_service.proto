@@ -13,6 +13,10 @@ service BetService {
     returns (GetCompetitionsDota2Response);
   rpc UpdateCompetitionDota2 (UpdateCompetitionDota2Request)
     returns (UpdateCompetitionDota2Response);
+  rpc EndCompetitionById (EndCompetitionByIdRequest)
+    returns (EndCompetitionByIdResponse);
+  rpc DepositToCoefficientById (DepositToCoefficientByIdRequest)
+    returns (DepositToCoefficientByIdResponse);
 }
 
 message CreateCompetitionDota2Request {
@@ -36,6 +40,23 @@ message UpdateCompetitionDota2Request {
 }
 
 message UpdateCompetitionDota2Response {
+}
+
+message EndCompetitionByIdRequest 
+  string id = 1;
+}
+
+message EndCompetitionByIdResponse {
+}
+
+message DepositToCoefficientByIdRequest {
+  string competition_id = 1;
+  string coefficient_id = 2;
+  double amount = 3;
+}
+
+message DepositToCoefficientByIdResponse {
+  double rate = 1;
 }
 
 enum CompetitionStatusType {
