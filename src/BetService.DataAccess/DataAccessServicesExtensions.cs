@@ -40,8 +40,9 @@ namespace BetService.DataAccess
         /// </returns>
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            services.AddScoped<ICompetitionRepository<CompetitionDota2>, CompetitionDota2Repository>();
-
+            services
+                .AddScoped<ICompetitionRepository<CompetitionDota2>, CompetitionDota2Repository>()
+                .AddScoped<ICoefficientRepository, CoefficientRepository>();
             return services;
         }
 
