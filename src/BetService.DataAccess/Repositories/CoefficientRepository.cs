@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using BetService.BusinessLogic.Contracts.Repositories;
+using BetService.BusinessLogic.Models;
 using BetService.DataAccess.MongoEntities.CompetitionEntities;
 using Microsoft.Extensions.Logging;
+using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using SharpCompress.Common;
 
 namespace BetService.DataAccess.Repositories
@@ -36,7 +39,23 @@ namespace BetService.DataAccess.Repositories
             var filterCompetitionId = filterBuilder.Eq(x => x.Id, competitionId.ToString());
 
             var update = Builders<CompetitionDota2Entity>.Update;
-            var incAmount = update.Inc("CompetitionDota2Entity.CoefficientGroups.$.Coefficients.$.Amount", amount);
+                    var incAmount = update.Inc(x => x.CoefficientGroups.AllMatchingElements("cg")
+                        .Coefficients.AllMatchingElements("c").Amount, amount);
+
+            var _defaultCompetitionDota2EntityFindOption = new FindOneAndUpdateOptions<CompetitionDota2Entity>
+            {
+                ArrayFilters = new ArrayFilterDefinition[]
+                {
+                    new BsonDocumentArrayFilterDefinition<CoefficientGroup>
+                    (
+                        new BsonDocument("cg._id", competitionIdstring)
+                    ),
+                    new BsonDocumentArrayFilterDefinition<Coefficient>
+                    (
+                        new BsonDocument("c._id", сoefficientIdstring)
+                    )
+                }
+            };
 
             var existingCoefficientGroup = await _collection.FindOneAndUpdateAsync(
                 filterCompetitionId,

@@ -42,7 +42,7 @@ message UpdateCompetitionDota2Request {
 message UpdateCompetitionDota2Response {
 }
 
-message EndCompetitionByIdRequest 
+message EndCompetitionByIdRequest {
   string id = 1;
 }
 

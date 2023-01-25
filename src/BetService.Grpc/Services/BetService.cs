@@ -14,14 +14,17 @@ namespace BetService.Grpc.Services
         private readonly IMapper _mapper;
         private readonly ILogger<BetService> _logger;
         private readonly ICompetitionService<BussinessModels.Competitions.CompetitionDota2> _competitionDota2Service;
+        private readonly ICoefficientRepository _coefficientRepository;
 
         public BetService(
             ILogger<BetService> logger,
             ICompetitionService<BussinessModels.Competitions.CompetitionDota2> competitionDota2Service,
+            ICoefficientRepository coefficientRepository,
             IMapper mapper)
         {
             _logger = logger;
             _competitionDota2Service = competitionDota2Service;
+            _coefficientRepository = coefficientRepository;
             _mapper = mapper;
         }
 
@@ -61,6 +64,23 @@ namespace BetService.Grpc.Services
             await _competitionDota2Service.UpdateCompetition(competitionForUpdate, token);
 
             return new UpdateCompetitionDota2Response();
+        }
+
+        public override async Task<DepositToCoefficientByIdResponse> DepositToCoefficientById(DepositToCoefficientByIdRequest request, ServerCallContext context)
+        {
+            var token = context.CancellationToken;
+        
+            var competitionId = _mapper.Map<Guid>(request.CompetitionId);
+            var coefficientId = _mapper.Map<Guid>(request.CoefficientId);
+        
+            await _coefficientRepository.DepositAmountById(competitionId, coefficientId, request.Amount, token);
+        
+            var response = new DepositToCoefficientByIdResponse()
+            {
+                Rate = 0,
+            };
+        
+            return response;
         }
     }
 }

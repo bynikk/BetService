@@ -25,7 +25,10 @@ namespace BetService.DataAccess
             services.AddSingleton(serviceProvider =>
             {
                 var options = serviceProvider.GetRequiredService<IOptions<BetDbConfig>>();
-                var client = new MongoClient(options.Value.ConnectionString);
+                var clientSettings = MongoClientSettings.FromConnectionString(options.Value.ConnectionString);
+                clientSettings.LinqProvider = MongoDB.Driver.Linq.LinqProvider.V3;
+
+                var client = new MongoClient(clientSettings);
 
                 return client.GetDatabase(options.Value.DatabaseName);
             });
