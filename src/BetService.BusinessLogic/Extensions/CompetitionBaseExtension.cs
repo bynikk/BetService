@@ -21,6 +21,8 @@ namespace BetService.BusinessLogic.Extensions
                 coefficientsGroups[i].RecalculateRate();
             }
 
+            competitionsBase.CoefficientGroups = coefficientsGroups;
+
             return competitionsBase;
         }
     }
